@@ -51,11 +51,13 @@ jobs:
           fi
       - name: Replace site url
         env:
-          REPLACE_FROM: "https://webusstatic.yo-star.com/bluearchive-jp/ba-jp-aprilfools-minigame/prod/minigame-2025/toschool/"
+          REPLACE_FROM_1: "https://webusstatic.yo-star.com/bluearchive-jp/ba-jp-aprilfools-minigame/prod/minigame-2025/toschool/"
+          REPLACE_FROM_2: "https://bluearchive.jp/toschool/"
           REPLACE_TO: ${{ steps.base_url.outputs.value }}
         run: |
           echo "Replacing site URL in config"
-          sed -i "s|${REPLACE_FROM}|${REPLACE_TO}|g" ./public/index.html
+          sed -i "s|${REPLACE_FROM_1}|${REPLACE_TO}|g" ./public/index.html
+          sed -i "s|${REPLACE_FROM_2}|${REPLACE_TO}|g" ./public/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
