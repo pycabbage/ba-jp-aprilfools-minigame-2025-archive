@@ -36,6 +36,9 @@ jobs:
         id: config
         with:
           enablement: true
+      - name: Validate checksum
+        id: checksum
+        run: sha256sum --strict -c assets.sha256
       - name: Prepare base URL
         id: base_url
         run: |
